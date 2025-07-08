@@ -9,7 +9,7 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default"
-title                    : "Minji Kim"
+title                    : "Minji's Webpage"
 title_separator          : "-"
 name                     : &name "Minji Kim"
 description              : &description "UC Berkeley Statistics Graduate | Marketing Analytics Enthusiast"
