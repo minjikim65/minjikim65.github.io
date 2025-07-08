@@ -27,25 +27,25 @@ author:
   pronouns         : "she/her"  
   bio              : "Marketing Analytics Enthusiast | UC Berkeley Stats Graduate"
   location         : "San Francisco Bay Area"
-  employer         : "Nicebake| CABS "
+  employer         : "Nicebake | CABS "
   URI              : "https://minjikim65.github.io"
   email            : "kimmg0805@gmail.com" 
 
   # Social media
-  Instagram        : "heyminzzy_ya"
+  Instagram        : "https://www.instagram.com/heyminzzy_ya/?hl=en"
   linkedin         : "www.linkedin.com/in/minjikim9856"
-  youtube          : # Username
+  github           : "https://github.com/minjikim65"
   spotify          : # Username     
 
 
 # Publication Category - The following the list of publication categories and their headings
-publication_category:
-  books:
-    title: 'Books'
-  manuscripts:
-    title: 'Journal Articles'    
-  conferences:
-    title: 'Conference Papers'
+#publication_category:
+ # books:
+  #  title: 'Books'
+  #manuscripts:
+   # title: 'Journal Articles'    
+  #conferences:
+   # title: 'Conference Papers'
 
 # Site Settings
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
