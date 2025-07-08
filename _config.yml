@@ -13,9 +13,9 @@ title                    : "Minji Kim"
 title_separator          : "-"
 name                     : &name "Minji Kim"
 description              : &description "UC Berkeley Statistics Graduate | Marketing Analytics Enthusiast"
-url                      : https://academicpages.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io" or if you already have some other page hosted on Github then use "https://minjikim65.github.io"
+url                      : "https://minjikim65.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "academicpages/academicpages.github.io"
+repository               : "https://github.com/minjikim65"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
@@ -23,17 +23,17 @@ repository               : "academicpages/academicpages.github.io"
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : "Your Sidebar Name"
-  pronouns         : # example: "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
+  name             : "Minji Kim"
+  pronouns         : "she/her"  
+  bio              : "Marketing Analytics Enthusiast | UC Berkeley Stats Graduate"
   location         : "San Francisco Bay Area"
-  employer         : "Red Brick University"
-  uri              : # URL
+  employer         : "Nicebake| CABS "
+  URI              : "https://minjikim65.github.io"
   email            : "kimmg0805@gmail.com" 
 
   # Social media
-  instagram        : # Username
-  linkedin         : # Username
+  Instagram        : "heyminzzy_ya"
+  linkedin         : "www.linkedin.com/in/minjikim9856"
   youtube          : # Username
   spotify          : # Username     
 
