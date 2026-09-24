@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minji Kim | Financial & Quantitative Analyst</title>
+<meta name="description" content="Portfolio of Minji Kim: FP&A modeling, financial analytics, dynamic pricing strategies, and corporate finance.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #EDF1EA;
+    --paper-raised: #F6F8F3;
+    --ink: #1F2B24;
+    --ink-soft: #4A5A4F;
+    --rule: #C3CDBC;
+    --rule-strong: #97A38F;
+    --brass: #9C7A3C;
+    --brass-soft: #C7AD79;
+    --pos: #2F6E4F;
+    --neg: #A5402F;
+    --max-w: 920px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--brass-soft); color:var(--ink);}
+  a{color:inherit;}
+  .wrap{max-width:var(--max-w); margin:0 auto; padding:0 28px;}
+  .mono{font-family:'IBM Plex Mono', monospace; font-variant-numeric:tabular-nums;}
+  .display{font-family:'Fraunces', serif;}
+
+  body{
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 37px,
+      rgba(151,163,143,0.16) 38px
+    );
+  }
+
+  header.site{
+    position:sticky; top:0; z-index:50;
+    background:rgba(237,241,234,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom:1px solid var(--rule);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    max-width:var(--max-w); margin:0 auto; padding:16px 28px;
+  }
+  .nav-mark{
+    font-family:'Fraunces', serif; font-weight:600; font-size:1.05rem; letter-spacing:0.01em;
+  }
+  .nav-links{display:flex; gap:26px; list-style:none; margin:0; padding:0; font-size:0.88rem;}
+  .nav-links a{text-decoration:none; color:var(--ink-soft); position:relative; padding-bottom:3px;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-links a::after{
+    content:''; position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--brass);
+    transition:width .25s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+
+  /* HERO */
+  .hero{padding:76px 0 32px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:0.74rem; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--brass); margin-bottom:14px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:''; width:22px; height:1px; background:var(--brass);}
+  h1.name{
+    font-family:'Fraunces', serif; font-weight:600; font-size:clamp(2rem, 4.2vw, 2.9rem);
+    line-height:1.05; margin:0 0 16px; letter-spacing:-0.01em;
+  }
+  .role-line{
+    font-size:1.02rem; color:var(--ink-soft); max-width:62ch; margin:0 0 32px; line-height:1.65;
+  }
+  .role-line strong{color:var(--ink); font-weight:600;}
+
+  .stat-row{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:0;
+    border-top:1px solid var(--rule-strong); border-bottom:1px solid var(--rule-strong);
+    margin-bottom:8px;
+  }
+  .stat{
+    padding:16px 18px; border-right:1px solid var(--rule);
+  }
+  .stat:last-child{border-right:none;}
+  .stat-label{
+    font-family:'IBM Plex Mono', monospace; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.1em;
+    color:var(--ink-soft); margin-bottom:6px;
+  }
+  .stat-value a{text-decoration:none; border-bottom:1px solid var(--rule-strong);}
+  .stat-value a:hover{border-color:var(--brass); color:var(--brass);}
+  .stat-value{font-size:0.95rem; font-weight:500;}
+
+  section{padding:60px 0;}
+  .section-head{
+    display:flex; align-items:baseline; gap:16px; margin-bottom:8px;
+  }
+  .section-num{
+    font-family:'IBM Plex Mono', monospace; color:var(--brass-soft); font-size:0.85rem;
+  }
+  h2.section-title{
+    font-family:'Fraunces', serif; font-weight:600; font-size:1.7rem; margin:0;
+  }
+  .section-rule{border:none; border-top:1px solid var(--rule-strong); margin:14px 0 34px;}
+
+  /* PROJECT CARDS */
+  .project{
+    background:var(--paper-raised);
+    border:1px solid var(--rule);
+    border-radius:2px;
+    margin-bottom:28px;
+    overflow:hidden;
+  }
+  .project-head{
+    padding:22px 26px 18px; border-bottom:1px solid var(--rule);
+    display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap;
+  }
+  .project-tag{
+    font-family:'IBM Plex Mono', monospace; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.1em;
+    color:var(--brass); margin-bottom:8px;
+  }
+  h3.project-title{font-family:'Fraunces', serif; font-size:1.35rem; font-weight:600; margin:0 0 6px;}
+  .project-q{color:var(--ink-soft); font-size:0.95rem; font-style:italic;}
+  .project-body{padding:20px 26px 26px;}
+  .project-body p{margin:0 0 14px; font-size:0.96rem;}
+  .project-body p:last-of-type{margin-bottom:0;}
+
+  table.figures{
+    width:100%; border-collapse:collapse; margin:16px 0 20px;
+    font-family:'IBM Plex Mono', monospace; font-size:0.84rem;
+  }
+  table.figures th, table.figures td{
+    text-align:right; padding:8px 10px; border-bottom:1px solid var(--rule);
+  }
+  table.figures th:first-child, table.figures td:first-child{text-align:left; color:var(--ink-soft); font-weight:400;}
+  table.figures thead th{
+    color:var(--ink-soft); font-weight:500; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.06em;
+    border-bottom:1px solid var(--rule-strong);
+  }
+  .pos{color:var(--pos);}
+  .neg{color:var(--neg);}
+
+  .finding{
+    background:var(--paper); border-left:2px solid var(--brass);
+    padding:12px 16px; margin:16px 0; font-size:0.92rem;
+  }
+  .finding strong{color:var(--ink);}
+
+  .project-links{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem; text-decoration:none;
+    padding:9px 14px; border:1px solid var(--rule-strong); color:var(--ink);
+    transition:all .18s ease; border-radius:2px;
+  }
+  .btn:hover{border-color:var(--brass); color:var(--brass); background:rgba(156,122,60,0.06);}
+  .btn.primary{background:var(--ink); color:var(--paper); border-color:var(--ink);}
+  .btn.primary:hover{background:var(--brass); border-color:var(--brass); color:var(--paper);}
+
+  /* SKILLS */
+  .skills-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:32px;}
+  .skill-group h4{
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em;
+    color:var(--brass); margin:0 0 12px;
+  }
+  .skill-group ul{list-style:none; margin:0; padding:0;}
+  .skill-group li{
+    padding:7px 0; border-bottom:1px dotted var(--rule-strong); font-size:0.92rem;
+  }
+
+  /* EXPERIENCE */
+  .exp-item{padding:20px 0; border-bottom:1px solid var(--rule);}
+  .exp-item:last-child{border-bottom:none;}
+  .exp-top{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:8px;}
+  .exp-role{font-weight:600; font-size:1.02rem;}
+  .exp-org{color:var(--ink-soft); font-size:0.95rem;}
+  .exp-time{font-family:'IBM Plex Mono', monospace; font-size:0.76rem; color:var(--ink-soft); white-space:nowrap; text-align:right;}
+  .exp-location{font-family:'IBM Plex Mono', monospace; font-size:0.76rem; color:var(--ink-soft); white-space:nowrap; text-align:right; margin-top:2px;}
+  .exp-bullets{margin:8px 0 0; padding-left:18px; font-size:0.92rem; color:var(--ink-soft);}
+  .exp-bullets li{margin-bottom:6px;}
+  .exp-bullets li:last-child{margin-bottom:0;}
+  .exp-subproject{
+    margin-top:10px; padding:8px 12px; background:rgba(246,248,243,0.7); border-left:2px solid var(--rule-strong); font-size:0.88rem;
+  }
+
+  /* BEYOND */
+  .personal-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;}
+  .personal-card{
+    background:var(--paper-raised); border:1px solid var(--rule); border-radius:2px;
+    padding:20px 22px;
+  }
+  .personal-card h4{font-family:'Fraunces', serif; font-size:1.05rem; margin:0 0 8px; font-weight:600;}
+  .personal-card p{margin:0; font-size:0.9rem; color:var(--ink-soft);}
+
+  /* RESUME / CONTACT */
+  .resume-band{
+    background:var(--ink); color:var(--paper);
+    padding:52px 0; margin-top:20px;
+  }
+  .resume-band .wrap{display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap;}
+  .resume-band h2{font-family:'Fraunces', serif; font-size:1.6rem; margin:0 0 8px; font-weight:600;}
+  .resume-band p{margin:0; color:#B9C4B4; font-size:0.94rem;}
+  .resume-band .btn{border-color:#4A5A4F; color:var(--paper);}
+  .resume-band .btn:hover{border-color:var(--brass-soft); color:var(--brass-soft); background:rgba(199,173,121,0.08);}
+  .resume-band .btn.primary{background:var(--brass); border-color:var(--brass); color:var(--ink);}
+  .resume-band .btn.primary:hover{background:var(--brass-soft); border-color:var(--brass-soft);}
+
+  footer{padding:36px 0 50px;}
+  .foot-row{
+    display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;
+    font-size:0.84rem; color:var(--ink-soft);
+    border-top:1px solid var(--rule); padding-top:20px;
+  }
+  .foot-links{display:flex; gap:18px; list-style:none; margin:0; padding:0;}
+  .foot-links a{text-decoration:none; border-bottom:1px solid transparent;}
+  .foot-links a:hover{border-color:var(--brass); color:var(--brass);}
+
+  [data-reveal]{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
+  [data-reveal].in{opacity:1; transform:translateY(0);}
+
+  @media (max-width:640px){
+    .nav-links{gap:16px; font-size:0.8rem;}
+    .stat-row{grid-template-columns:1fr; }
+    .stat{border-right:none; border-bottom:1px solid var(--rule);}
+    .stat:last-child{border-bottom:none;}
+    .skills-grid{grid-template-columns:1fr;}
+    .personal-grid{grid-template-columns:1fr;}
+    table.figures{font-size:0.74rem;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    [data-reveal]{opacity:1; transform:none; transition:none;}
+  }
+  a:focus-visible, button:focus-visible{outline:2px solid var(--brass); outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <nav class="nav">
+    <div class="nav-mark">Minji Kim</div>
+    <ul class="nav-links">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#beyond">Beyond</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO SECTION -->
+  <div class="wrap hero">
+    <div class="eyebrow">Financial Analyst &middot; Corporate Finance &amp; Revenue Analytics</div>
+    <h1 class="name">Minji Kim</h1>
+    <p class="role-line">
+      Financial Analyst with a rigorous quantitative background in statistics from <strong>UC Berkeley</strong>, using SQL, Python, and financial modeling to optimize pricing, forecast revenue, and drive executive decision-making. Certified <strong>FMAA</strong> (Financial &amp; Managerial Accounting Associate) by the Institute of Management Accountants.
+      <a href="https://drive.google.com/file/d/1z3UCRYpSGdB4XXEKDiMo6eHlQyouM2Hk/view?usp=sharing" target="_blank" rel="noopener" style="border-bottom:1px solid var(--rule-strong); white-space:nowrap;">View Credential &rarr;</a>
+    </p>
+
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-label">Location</div>
+        <div class="stat-value">San Francisco Bay Area, CA</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Education</div>
+        <div class="stat-value">B.A. Statistics, UC Berkeley</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Contact</div>
+        <div class="stat-value"><a href="mailto:minjikim.ready@gmail.com">minjikim.ready@gmail.com</a></div>
+      </div>
+    </div>
+
+    <div class="project-links" style="margin-top:24px;">
+      <a class="btn" href="https://www.linkedin.com/in/minjik30" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/minjikim65" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+
+  <div class="wrap" style="padding-top:12px; padding-bottom:12px;">
+    <p style="color:var(--ink-soft); font-size:0.96rem; line-height:1.65;">
+      My analytical edge combines statistical modeling with financial execution: I deploy advanced analytics and automation to transform raw financial datasets into strategic roadmaps. Below is my experience, skill set, and a few projects that put it all into practice.
+    </p>
+  </div>
+
+  <!-- EXPERIENCE SECTION -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num">01</span>
+        <h2 class="section-title">Professional Experience</h2>
+      </div>
+      <hr class="section-rule">
+      <div data-reveal>
+        
+        <div class="exp-item">
+          <div class="exp-top">
+            <div><span class="exp-role">Junior Financial Analyst</span> &nbsp;<span class="exp-org">&middot; N2N GXPS4U LLC &middot; Full-time</span></div>
+            <div><div class="exp-time">Sep 2025 &ndash; Present</div><div class="exp-location">San Mateo, CA</div></div>
+          </div>
+          <ul class="exp-bullets">
+            <li>Streamlined annual financial reporting by building dynamic spreadsheet pipelines (INDEX/MATCH, IMPORTRANGE) that consolidate monthly OpEx, revenues, and personnel cost allocations <strong>across 5 business entities</strong>, accelerating reporting efficiency.</li>
+            <li>Resolved <strong>$8K+ in historical payroll overpayments</strong> through rigorous year-end closing audits and implemented an operational cost-tracking model to eliminate ledger discrepancies across all business accounts.</li>
+          </ul>
+          <div class="exp-subproject">
+            <strong>Key Analytics Work:</strong> Automated receipt-to-ledger processing via custom Google Apps Script, eliminating redundant data entry, and developed dynamic Excel financial models to forecast contract-level profitability.
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-top">
+            <div><span class="exp-role">Data Science Intern</span> &nbsp;<span class="exp-org">&middot; Chinese American Biopharmaceutical Association (CABS) &middot; Project-based</span></div>
+            <div><div class="exp-time">Jun 2024 &ndash; Sep 2025</div><div class="exp-location">San Francisco, CA</div></div>
+          </div>
+          <ul class="exp-bullets">
+            <li>Leveraged the Gemini API to extract and parse complex clinical dataset endpoints, constructing an <strong>automated data pipeline</strong> to visualize key analytical metrics for stakeholders.</li>
+            <li>Synthesized attendee survey data across 2 annual BioPacific Conferences to evaluate pricing sensitivity and event feedback, delivering structured insights <strong>used for executive pricing strategy meetings</strong>.</li>
+          </ul>
+          <p style="margin-top:8px;">
+            <a href="https://docs.google.com/document/d/1VvAezRi-zC1qBoC14Poki-7wDSlRvEYr/edit?usp=sharing&ouid=117271868207769694299&rtpof=true&sd=true" target="_blank" rel="noopener" style="border-bottom:1px solid var(--rule-strong);">View Recommendation Letter &rarr;</a>
+            &nbsp;&middot;&nbsp;
+            <a href="https://drive.google.com/file/d/1iv-vRBbcdeAOGVrQO7pISHGj9SJAyNlC/view?usp=sharing" target="_blank" rel="noopener" style="border-bottom:1px solid var(--rule-strong);">View Certificate &rarr;</a>
+          </p>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-top">
+            <div><span class="exp-role">Market Research</span> &nbsp;<span class="exp-org">&middot; Exinov &middot; Project-based</span></div>
+            <div><div class="exp-time">May 2024 &ndash; Jul 2024</div><div class="exp-location">Berkeley, CA</div></div>
+          </div>
+          <ul class="exp-bullets">
+            <li>Evaluated public company financials, 10-K/10-Q SEC filings, and macro market trends to build <strong>quantitative valuation and competitor benchmarks</strong>.</li>
+          </ul>
+          <p style="margin-top:8px;"><a href="https://drive.google.com/file/d/1H3ol2PsfFJKvRRzuDCygqH9jYOs7uoiA/view?usp=sharing" target="_blank" rel="noopener" style="border-bottom:1px solid var(--rule-strong);">View Market Research Deliverable &rarr;</a></p>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-top">
+            <div><span class="exp-role">Co-Founder, Finance &amp; Operations</span> &nbsp;<span class="exp-org">&middot; NiceBake &middot; Part-time</span></div>
+            <div><div class="exp-time">Feb 2024 &ndash; Sep 2025</div><div class="exp-location">Santa Clara, CA</div></div>
+          </div>
+          <ul class="exp-bullets">
+            <li>Calculated unit costs and product margins from scratch, establishing invoicing workflows with <strong>100% transaction tracking and zero billing errors</strong>.</li>
+            <li>Built the online ordering platform and managed fulfillment, processing 400+ monthly items to achieve a <strong>100% weekly sell-out rate and 2-hour pop-up clearances</strong>.</li>
+          </ul>
+          <p style="margin-top:8px;"><a href="https://drive.google.com/file/d/1mcrIQCDTMPkSuzPuf-6KsbYn1zSbwOPg/view?usp=sharing" target="_blank" rel="noopener" style="border-bottom:1px solid var(--rule-strong);">View Business Pitch Deck &rarr;</a></p>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-top">
+            <div><span class="exp-role">Marketing Intern</span> &nbsp;<span class="exp-org">&middot; Playhouse &middot; Part-time</span></div>
+            <div><div class="exp-time">Sep 2023 &ndash; Dec 2023</div><div class="exp-location">Berkeley, CA</div></div>
+          </div>
+          <ul class="exp-bullets">
+            <li>Analyzed user engagement metrics and retention trends to identify growth opportunities for early-stage go-to-market (GTM) execution.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<!-- SKILLS SECTION -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <h2 class="section-title">Core Competencies</h2>
+      </div>
+      <hr class="section-rule">
+      <div class="skills-grid" data-reveal>
+        <div class="skill-group">
+          <h4>Financial &amp; Reporting</h4>
+          <ul>
+            <li>Financial Modeling &amp; Forecasting</li>
+            <li>P&amp;L Analysis &amp; Variance Reporting</li>
+            <li>Cash Flow &amp; Working Capital Management</li>
+            <li>Revenue &amp; Margin Optimization</li>
+            <li>GAAP Principles &amp; Reconciliation</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4>Analytics &amp; Technical Stack</h4>
+          <ul>
+            <li>Advanced Excel (VBA, Complex Modeling)</li>
+            <li>SQL &amp; Relational Databases</li>
+            <li>Python (Pandas, NumPy) &amp; R</li>
+            <li>Tableau &amp; Data Visualization</li>
+            <li>Generative AI &amp; API Data Pipelines</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4>Enterprise Systems &amp; Ops</h4>
+          <ul>
+            <li>SAP ERP Systems</li>
+            <li>QuickBooks Online</li>
+            <li>Google Workspace &amp; Apps Script Automation</li>
+            <li>Cross-Functional Stakeholder Alignment</li>
+            <li>Financial Process Optimization</li>
+            <li>Bilingual: English &amp; Korean</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- PROJECTS SECTION -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num">03</span>
+        <h2 class="section-title">Selected Projects</h2>
+      </div>
+      <hr class="section-rule">
+
+      <!-- PROJECT 1: PROFITABILITY & SCENARIO ANALYSIS -->
+      <article class="project" data-reveal>
+        <div class="project-head">
+          <div>
+            <div class="project-tag">Financial Modeling &middot; Scenario Analysis</div>
+            <h3 class="project-title">Project Profitability &amp; Scenario Model</h3>
+            <p class="project-q">How resilient is project gross margin under aggressive pricing discounts, and what working capital terms protect cash flow?</p>
+          </div>
+        </div>
+        <div class="project-body">
+
+          <table class="figures">
+            <thead>
+              <tr><th>Client Discount Scenario</th><th>Projected Gross Margin</th><th>Status vs. Target Floor</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>0% Discount (Base)</td><td>53.16%</td><td class="pos">+3.16% Surplus</td></tr>
+              <tr><td>5% Discount</td><td>50.69%</td><td class="pos">+0.69% Surplus</td></tr>
+              <tr><td class="neg">6.31% Discount</td><td class="neg">50.00%</td><td class="neg">Target Floor Boundary</td></tr>
+              <tr><td>10% Discount</td><td class="neg">47.95%</td><td class="neg">Margin Breach</td></tr>
+            </tbody>
+          </table>
+
+          <div class="finding">
+            <strong>Key Insight:</strong> <strong>6.31%</strong> is the exact breakeven discount before margin drops below the firm's 50% target, a hard floor to know going into final-round price negotiations.
+          </div>
+
+          <div class="project-links">
+            <a class="btn primary" href="https://docs.google.com/spreadsheets/d/1avzYJ0lZNLfmX_MmU-ijMckdfOBhGUFQxHd6e2p4wnI/edit?usp=sharing" target="_blank" rel="noopener">Download Financial Model (.xlsx)</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 2: CLINICAL TRIAL MARKET ACCESS -->
+      <article class="project" data-reveal>
+        <div class="project-head">
+          <div>
+            <div class="project-tag">Market Intelligence &middot; AI Data Pipelines</div>
+            <h3 class="project-title">Obesity Clinical Trials: Strategic Market Intelligence</h3>
+            <p class="project-q">Where are the unaddressed commercial white spaces within a highly fragmented biopharma clinical trial pipeline?</p>
+          </div>
+        </div>
+        <div class="project-body">
+
+          <table class="figures">
+            <thead>
+              <tr><th>Treatment Type</th><th>Total Studies</th><th>Development Stage</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Drug</td><td>341</td><td class="neg">Mostly Late/Unknown</td></tr>
+              <tr><td>Behavioral</td><td>124</td><td class="pos">Mostly early-stage</td></tr>
+            </tbody>
+          </table>
+
+          <div class="finding">
+            <strong>Key Insight:</strong> Drug trials outnumber behavioral trials nearly 3-to-1, but they're also further along and more competitive — behavioral trials are still mostly early-stage, the clearer whitespace for a new entrant.
+          </div>
+
+          <div class="project-links">
+            <a class="btn primary" href="https://docs.google.com/presentation/d/13M1UTcwBWttx6-MKJ6FIrWtt5v-eOt9Jrrmbc_Wz78w/edit?usp=sharing" target="_blank" rel="noopener">View Strategic Deck (PDF)</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 3: AMC PRICING STRATEGY -->
+      <article class="project" data-reveal>
+        <div class="project-head">
+          <div>
+            <div class="project-tag">Pricing Optimization &middot; Quantitative Strategy</div>
+            <h3 class="project-title">AMC Theatres: Multi-Tier Membership Pricing Model</h3>
+            <p class="project-q">How can subscription pricing and benefit structuring be optimized to capture latent consumer Willingness-to-Pay (WTP)?</p>
+          </div>
+        </div>
+        <div class="project-body">
+
+          <table class="figures">
+            <thead>
+              <tr><th>Membership Tier (Avid Segment)</th><th>Baseline WTP</th><th>Post-Optimization WTP</th><th>Net Lift</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>A-List</td><td>$50.00</td><td class="pos">$55.00</td><td class="pos">+$5.00 (+10%)</td></tr>
+              <tr><td>Premiere</td><td>$10.00</td><td class="pos">$20.00</td><td class="pos">+$10.00 (+100%)</td></tr>
+              <tr><td>Insider</td><td>$5.00</td><td class="pos">$8.00</td><td class="pos">+$3.00 (+60%)</td></tr>
+            </tbody>
+          </table>
+
+          <div class="finding">
+            <strong>Key Insight:</strong> The Premiere tier's baseline WTP sat below its $15/yr list price, the biggest pricing miss of the three tiers, and the one with the most room to fix.
+          </div>
+
+          <div class="project-links">
+            <a class="btn primary" href="https://drive.google.com/file/d/1M_vtloWjPU07PoenqQ7cGrN6H2ryGPQy/view?usp=sharing" target="_blank" rel="noopener">View Full Pricing Report (PDF)</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- BEYOND SECTION -->
+  <section id="beyond">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num">04</span>
+        <h2 class="section-title">Leadership &amp; Beyond</h2>
+      </div>
+      <hr class="section-rule">
+      <div class="personal-grid" data-reveal>
+        <div class="personal-card">
+          <h4>UC Berkeley Mentorship</h4>
+          <p>1:1 academic and career mentor for UC transfer applicants. Successfully guided students through complex application strategies, with mentees securing admissions to UC Berkeley and UCLA.</p>
+        </div>
+        <div class="personal-card">
+          <h4>WSET Certified (Level 1)</h4>
+          <p>Earned my WSET Level 1 in wine — I love discovering new bottles and sharing them with friends over a good meal.</p>
+          <p style="margin-top:8px;"><a href="https://www.credential.net/db2fb8f5-63a1-4752-997a-3cc4ab18b530?username=minjik300835" target="_blank" rel="noopener" style="border-bottom:1px solid var(--rule-strong);">View Credential &rarr;</a></p>
+        </div>
+        <div class="personal-card">
+          <h4>Digital Community Growth</h4>
+          <p>Scaled a personal dance and lifestyle platform to <strong>200K+ followers and 2M+ likes</strong>. Leveraged audience analytics and retention metrics to execute high-engagement campaigns.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- RESUME BAND -->
+<div class="resume-band" id="resume">
+  <div class="wrap">
+    <div>
+      <h2>Full Professional Resume</h2>
+      <p>Comprehensive record of education, financial achievements, technical skills, and certifications.</p>
+    </div>
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <a class="btn primary" href="PASTE_RESUME_LINK_HERE" target="_blank" rel="noopener">View Resume</a>
+      <a class="btn" href="PASTE_RESUME_LINK_HERE" target="_blank" rel="noopener">Download PDF</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-row">
+      <div>Minji Kim &middot; Financial Analyst &middot; San Francisco Bay Area, CA</div>
+      <ul class="foot-links">
+        <li><a href="mailto:minjikim.ready@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/minjik30" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/minjikim65" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const items = document.querySelectorAll('[data-reveal]');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.12});
+  items.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
