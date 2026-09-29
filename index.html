@@ -12,11 +12,11 @@
   :root{
     --paper: #EDF1EA;
     --paper-raised: #F6F8F3;
-    --ink: #1F2B24;
-    --ink-soft: #4A5A4F;
-    --rule: #C3CDBC;
-    --rule-strong: #97A38F;
-    --brass: #9C7A3C;
+    --ink: #182119;
+    --ink-soft: #33433A;
+    --rule: #B7C2AF;
+    --rule-strong: #8B9883;
+    --brass: #7C5D28;
     --brass-soft: #C7AD79;
     --pos: #2F6E4F;
     --neg: #A5402F;
@@ -133,9 +133,22 @@
   }
   h3.project-title{font-family:'Fraunces', serif; font-size:1.35rem; font-weight:600; margin:0 0 6px;}
   .project-q{color:var(--ink-soft); font-size:0.95rem; font-style:italic;}
-  .project-body{padding:20px 26px 26px;}
+  .project-body{padding:0 26px; max-height:0; overflow:hidden; transition:max-height .4s ease, padding .4s ease;}
+  .project-body.open{padding:20px 26px 26px; max-height:1400px;}
   .project-body p{margin:0 0 14px; font-size:0.96rem;}
   .project-body p:last-of-type{margin-bottom:0;}
+
+  .toggle-btn{
+    display:inline-flex; align-items:center; gap:7px; flex-shrink:0;
+    font-family:'IBM Plex Mono', monospace; font-size:0.76rem; letter-spacing:0.02em;
+    background:none; border:1px solid var(--rule-strong); color:var(--ink-soft);
+    padding:8px 13px; border-radius:2px; cursor:pointer; white-space:nowrap;
+    transition:all .18s ease;
+  }
+  .toggle-btn:hover{border-color:var(--brass); color:var(--brass);}
+  .toggle-btn .chev{display:inline-block; font-size:0.65rem; transition:transform .25s ease;}
+  .toggle-btn[aria-expanded="true"] .chev{transform:rotate(180deg);}
+  .project-footer{padding:16px 26px 24px;}
 
   table.figures{
     width:100%; border-collapse:collapse; margin:16px 0 20px;
@@ -188,9 +201,8 @@
   .exp-org{color:var(--ink-soft); font-size:0.95rem;}
   .exp-time{font-family:'IBM Plex Mono', monospace; font-size:0.76rem; color:var(--ink-soft); white-space:nowrap; text-align:right;}
   .exp-location{font-family:'IBM Plex Mono', monospace; font-size:0.76rem; color:var(--ink-soft); white-space:nowrap; text-align:right; margin-top:2px;}
-  .exp-bullets{margin:8px 0 0; padding-left:18px; font-size:0.92rem; color:var(--ink-soft);}
-  .exp-bullets li{margin-bottom:6px;}
-  .exp-bullets li:last-child{margin-bottom:0;}
+  .exp-text{margin:8px 0 0; font-size:0.92rem; color:var(--ink-soft); line-height:1.6;}
+  .exp-text + .exp-text{margin-top:6px;}
   .exp-subproject{
     margin-top:10px; padding:8px 12px; background:rgba(246,248,243,0.7); border-left:2px solid var(--rule-strong); font-size:0.88rem;
   }
@@ -314,10 +326,8 @@
             <div><span class="exp-role">Junior Financial Analyst</span> &nbsp;<span class="exp-org">&middot; N2N GXPS4U LLC &middot; Full-time</span></div>
             <div><div class="exp-time">Sep 2025 &ndash; Present</div><div class="exp-location">San Mateo, CA</div></div>
           </div>
-          <ul class="exp-bullets">
-            <li>Streamlined annual financial reporting by building dynamic spreadsheet pipelines (INDEX/MATCH, IMPORTRANGE) that consolidate monthly OpEx, revenues, and personnel cost allocations <strong>across 5 business entities</strong>, accelerating reporting efficiency.</li>
-            <li>Resolved <strong>$8K+ in historical payroll overpayments</strong> through rigorous year-end closing audits and implemented an operational cost-tracking model to eliminate ledger discrepancies across all business accounts.</li>
-          </ul>
+          <p class="exp-text">Streamlined annual financial reporting by building dynamic spreadsheet pipelines (INDEX/MATCH, IMPORTRANGE) that consolidate monthly OpEx, revenues, and personnel cost allocations <strong>across 5 business entities</strong>, accelerating reporting efficiency.</p>
+          <p class="exp-text">Resolved <strong>$8K+ in historical payroll overpayments</strong> through rigorous year-end closing audits and implemented an operational cost-tracking model to eliminate ledger discrepancies across all business accounts.</p>
           <div class="exp-subproject">
             <strong>Key Analytics Work:</strong> Automated receipt-to-ledger processing via custom Google Apps Script, eliminating redundant data entry, and developed dynamic Excel financial models to forecast contract-level profitability.
           </div>
@@ -328,10 +338,8 @@
             <div><span class="exp-role">Data Science Intern</span> &nbsp;<span class="exp-org">&middot; Chinese American Biopharmaceutical Association (CABS) &middot; Project-based</span></div>
             <div><div class="exp-time">Jun 2024 &ndash; Sep 2025</div><div class="exp-location">San Francisco, CA</div></div>
           </div>
-          <ul class="exp-bullets">
-            <li>Leveraged the Gemini API to extract and parse complex clinical dataset endpoints, constructing an <strong>automated data pipeline</strong> to visualize key analytical metrics for stakeholders.</li>
-            <li>Synthesized attendee survey data across 2 annual BioPacific Conferences to evaluate pricing sensitivity and event feedback, delivering structured insights <strong>used for executive pricing strategy meetings</strong>.</li>
-          </ul>
+          <p class="exp-text">Leveraged the Gemini API to extract and parse complex clinical dataset endpoints, constructing an <strong>automated data pipeline</strong> to visualize key analytical metrics for stakeholders.</p>
+          <p class="exp-text">Synthesized attendee survey data across 2 annual BioPacific Conferences to evaluate pricing sensitivity and event feedback, delivering structured insights <strong>used for executive pricing strategy meetings</strong>.</p>
           <p style="margin-top:8px;">
             <a href="https://docs.google.com/document/d/1VvAezRi-zC1qBoC14Poki-7wDSlRvEYr/edit?usp=sharing&ouid=117271868207769694299&rtpof=true&sd=true" target="_blank" rel="noopener" style="border-bottom:1px solid var(--rule-strong);">View Recommendation Letter &rarr;</a>
             &nbsp;&middot;&nbsp;
@@ -344,9 +352,7 @@
             <div><span class="exp-role">Market Research</span> &nbsp;<span class="exp-org">&middot; Exinov &middot; Project-based</span></div>
             <div><div class="exp-time">May 2024 &ndash; Jul 2024</div><div class="exp-location">Berkeley, CA</div></div>
           </div>
-          <ul class="exp-bullets">
-            <li>Evaluated public company financials, 10-K/10-Q SEC filings, and macro market trends to build <strong>quantitative valuation and competitor benchmarks</strong>.</li>
-          </ul>
+          <p class="exp-text">Evaluated public company financials, 10-K/10-Q SEC filings, and macro market trends to build <strong>quantitative valuation and competitor benchmarks</strong>.</p>
           <p style="margin-top:8px;"><a href="https://drive.google.com/file/d/1H3ol2PsfFJKvRRzuDCygqH9jYOs7uoiA/view?usp=sharing" target="_blank" rel="noopener" style="border-bottom:1px solid var(--rule-strong);">View Market Research Deliverable &rarr;</a></p>
         </div>
 
@@ -355,10 +361,8 @@
             <div><span class="exp-role">Co-Founder, Finance &amp; Operations</span> &nbsp;<span class="exp-org">&middot; NiceBake &middot; Part-time</span></div>
             <div><div class="exp-time">Feb 2024 &ndash; Sep 2025</div><div class="exp-location">Santa Clara, CA</div></div>
           </div>
-          <ul class="exp-bullets">
-            <li>Calculated unit costs and product margins from scratch, establishing invoicing workflows with <strong>100% transaction tracking and zero billing errors</strong>.</li>
-            <li>Built the online ordering platform and managed fulfillment, processing 400+ monthly items to achieve a <strong>100% weekly sell-out rate and 2-hour pop-up clearances</strong>.</li>
-          </ul>
+          <p class="exp-text">Calculated unit costs and product margins from scratch, establishing invoicing workflows with <strong>100% transaction tracking and zero billing errors</strong>.</p>
+          <p class="exp-text">Built the online ordering platform and managed fulfillment, processing 400+ monthly items to achieve a <strong>100% weekly sell-out rate and 2-hour pop-up clearances</strong>.</p>
           <p style="margin-top:8px;"><a href="https://drive.google.com/file/d/1mcrIQCDTMPkSuzPuf-6KsbYn1zSbwOPg/view?usp=sharing" target="_blank" rel="noopener" style="border-bottom:1px solid var(--rule-strong);">View Business Pitch Deck &rarr;</a></p>
         </div>
 
@@ -367,9 +371,7 @@
             <div><span class="exp-role">Marketing Intern</span> &nbsp;<span class="exp-org">&middot; Playhouse &middot; Part-time</span></div>
             <div><div class="exp-time">Sep 2023 &ndash; Dec 2023</div><div class="exp-location">Berkeley, CA</div></div>
           </div>
-          <ul class="exp-bullets">
-            <li>Analyzed user engagement metrics and retention trends to identify growth opportunities for early-stage go-to-market (GTM) execution.</li>
-          </ul>
+          <p class="exp-text">Analyzed user engagement metrics and retention trends to identify growth opportunities for early-stage go-to-market (GTM) execution.</p>
         </div>
 
       </div>
@@ -413,7 +415,6 @@
             <li>Google Workspace &amp; Apps Script Automation</li>
             <li>Cross-Functional Stakeholder Alignment</li>
             <li>Financial Process Optimization</li>
-            <li>Bilingual: English &amp; Korean</li>
           </ul>
         </div>
       </div>
@@ -437,6 +438,7 @@
             <h3 class="project-title">Project Profitability &amp; Scenario Model</h3>
             <p class="project-q">How resilient is project gross margin under aggressive pricing discounts, and what working capital terms protect cash flow?</p>
           </div>
+          <button class="toggle-btn" type="button" aria-expanded="false"><span class="label">View Analysis</span> <span class="chev">&#9662;</span></button>
         </div>
         <div class="project-body">
 
@@ -455,7 +457,8 @@
           <div class="finding">
             <strong>Key Insight:</strong> <strong>6.31%</strong> is the exact breakeven discount before margin drops below the firm's 50% target, a hard floor to know going into final-round price negotiations.
           </div>
-
+        </div>
+        <div class="project-footer">
           <div class="project-links">
             <a class="btn primary" href="https://docs.google.com/spreadsheets/d/1avzYJ0lZNLfmX_MmU-ijMckdfOBhGUFQxHd6e2p4wnI/edit?usp=sharing" target="_blank" rel="noopener">Download Financial Model (.xlsx)</a>
           </div>
@@ -470,6 +473,7 @@
             <h3 class="project-title">Obesity Clinical Trials: Strategic Market Intelligence</h3>
             <p class="project-q">Where are the unaddressed commercial white spaces within a highly fragmented biopharma clinical trial pipeline?</p>
           </div>
+          <button class="toggle-btn" type="button" aria-expanded="false"><span class="label">View Analysis</span> <span class="chev">&#9662;</span></button>
         </div>
         <div class="project-body">
 
@@ -486,7 +490,8 @@
           <div class="finding">
             <strong>Key Insight:</strong> Drug trials outnumber behavioral trials nearly 3-to-1, but they're also further along and more competitive — behavioral trials are still mostly early-stage, the clearer whitespace for a new entrant.
           </div>
-
+        </div>
+        <div class="project-footer">
           <div class="project-links">
             <a class="btn primary" href="https://docs.google.com/presentation/d/13M1UTcwBWttx6-MKJ6FIrWtt5v-eOt9Jrrmbc_Wz78w/edit?usp=sharing" target="_blank" rel="noopener">View Strategic Deck (PDF)</a>
           </div>
@@ -501,6 +506,7 @@
             <h3 class="project-title">AMC Theatres: Multi-Tier Membership Pricing Model</h3>
             <p class="project-q">How can subscription pricing and benefit structuring be optimized to capture latent consumer Willingness-to-Pay (WTP)?</p>
           </div>
+          <button class="toggle-btn" type="button" aria-expanded="false"><span class="label">View Analysis</span> <span class="chev">&#9662;</span></button>
         </div>
         <div class="project-body">
 
@@ -518,7 +524,8 @@
           <div class="finding">
             <strong>Key Insight:</strong> The Premiere tier's baseline WTP sat below its $15/yr list price, the biggest pricing miss of the three tiers, and the one with the most room to fix.
           </div>
-
+        </div>
+        <div class="project-footer">
           <div class="project-links">
             <a class="btn primary" href="https://drive.google.com/file/d/1M_vtloWjPU07PoenqQ7cGrN6H2ryGPQy/view?usp=sharing" target="_blank" rel="noopener">View Full Pricing Report (PDF)</a>
           </div>
@@ -589,6 +596,15 @@
     entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   }, {threshold:0.12});
   items.forEach(el => io.observe(el));
+
+  document.querySelectorAll('.toggle-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const body = btn.closest('.project-head').nextElementSibling;
+      const isOpen = body.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      btn.querySelector('.label').textContent = isOpen ? 'Hide Analysis' : 'View Analysis';
+    });
+  });
 </script>
 
 </body>
