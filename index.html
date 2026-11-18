@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minji Kim | Financial Analyst</title>
+<meta name="description" content="Portfolio of Minji Kim: pricing and profitability analysis, financial reporting, and finance process automation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #FCF8E6;
+    --paper-raised: #FFFDF3;
+    --ink: #14291E;
+    --ink-soft: #3B5446;
+    --rule: #E6DFB8;
+    --rule-strong: #C4BB8A;
+    --brass: #1F6B4A;
+    --brass-soft: #9BCBAE;
+    --amber: #D39A1F;
+    --amber-ink: #8A5E00;
+    --pos: #1F6B4A;
+    --neg: #B4402B;
+    --max-w: 920px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--brass-soft); color:var(--ink);}
+  a{color:inherit;}
+  .wrap{max-width:var(--max-w); margin:0 auto; padding:0 28px;}
+  .mono{font-family:'IBM Plex Mono', monospace; font-variant-numeric:tabular-nums;}
+  .display{font-family:'Fraunces', serif;}
+
+  body{
+    background-image: radial-gradient(900px 520px at 88% -8%, rgba(31,107,74,0.10), transparent 62%);
+    background-repeat:no-repeat;
+  }
+
+  header.site{
+    position:sticky; top:0; z-index:50;
+    background:rgba(252,248,230,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom:1px solid var(--rule);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    max-width:var(--max-w); margin:0 auto; padding:16px 28px;
+  }
+  .nav-mark{
+    font-family:'Fraunces', serif; font-weight:600; font-size:1.05rem; letter-spacing:0.01em;
+  }
+  .nav-links{display:flex; gap:26px; list-style:none; margin:0; padding:0; font-size:0.88rem;}
+  .nav-links a{text-decoration:none; color:var(--ink-soft); position:relative; padding-bottom:3px;}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-links a::after{
+    content:''; position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--brass);
+    transition:width .25s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+
+  /* HERO */
+  .hero{padding:76px 0 32px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:0.74rem; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--brass); margin-bottom:14px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:''; width:22px; height:1px; background:var(--brass);}
+  h1.name{
+    font-family:'Fraunces', serif; font-weight:600; font-size:clamp(2rem, 4.2vw, 2.9rem);
+    line-height:1.05; margin:0 0 16px; letter-spacing:-0.01em;
+  }
+  .role-line{
+    font-size:1.02rem; color:var(--ink-soft); max-width:62ch; margin:0 0 32px; line-height:1.65;
+  }
+  .role-line strong{color:var(--ink); font-weight:600;}
+
+  .kw-rows{display:grid; gap:12px; margin:0 0 30px;}
+  .kw-row{display:grid; grid-template-columns:116px 1fr; gap:14px; align-items:baseline;}
+  .kw-label{font-family:'IBM Plex Mono', monospace; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--ink-soft);}
+  .chips{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{font-family:'IBM Plex Mono', monospace; font-size:0.78rem; padding:5px 11px; border:1px solid var(--rule-strong); background:var(--paper-raised); border-radius:2px; color:var(--ink); text-decoration:none;}
+  .chip.cred{border-color:var(--brass); color:var(--brass);}
+  a.chip:hover{background:rgba(31,107,74,0.08);}
+  @media (max-width:600px){ .kw-row{grid-template-columns:1fr; gap:6px;} }
+
+  .stat-row{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:0;
+    border-top:1px solid var(--rule-strong); border-bottom:1px solid var(--rule-strong);
+    margin-bottom:8px;
+  }
+  .stat{
+    padding:16px 18px; border-right:1px solid var(--rule);
+  }
+  .stat:last-child{border-right:none;}
+  .stat-label{
+    font-family:'IBM Plex Mono', monospace; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.1em;
+    color:var(--ink-soft); margin-bottom:6px;
+  }
+  .stat-value a{text-decoration:none; border-bottom:1px solid var(--rule-strong);}
+  .stat-value a:hover{border-color:var(--brass); color:var(--brass);}
+  .stat-value{font-size:0.95rem; font-weight:500;}
+
+  section{padding:60px 0;}
+  .section-head{
+    display:flex; align-items:baseline; gap:16px; margin-bottom:8px;
+  }
+  .section-num{
+    font-family:'IBM Plex Mono', monospace; color:var(--brass-soft); font-size:0.85rem;
+  }
+  h2.section-title{
+    font-family:'Fraunces', serif; font-weight:600; font-size:1.7rem; margin:0;
+  }
+  .section-rule{border:none; border-top:1px solid var(--rule-strong); margin:14px 0 34px;}
+
+
+  /* CAREER TIMELINE (milestone path) */
+  .timeline{margin:0 0 34px; padding:18px 20px 14px; background:var(--paper-raised); border:1px solid var(--rule); overflow-x:auto;}
+  .tl-inner{min-width:600px;}
+  .tl-title{font-family:'IBM Plex Mono', monospace; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--ink-soft); margin:0 0 6px;}
+  .tl-flags{position:relative; height:62px;}
+  .tl-flag{position:absolute; bottom:0; width:0;}
+  .tl-flag .tx{position:absolute; bottom:14px; left:-6px; white-space:nowrap; font-size:0.78rem; line-height:1.25; padding-left:8px; border-left:2px solid var(--brass);}
+  .tl-flag .tx b{display:block; font-family:'IBM Plex Mono', monospace; font-weight:500; font-size:0.66rem; color:var(--brass);}
+  .tl-line{position:relative; height:2px; background:var(--ink);}
+  .tl-line i{position:absolute; top:-5px; width:12px; height:12px; border-radius:50%; background:var(--brass); border:2px solid var(--paper-raised); margin-left:-6px;}
+  .tl-years{position:relative; height:16px; margin:4px 0 8px; font-family:'IBM Plex Mono', monospace; font-size:0.68rem; color:var(--ink-soft);}
+  .tl-years span{position:absolute; top:0; transform:translateX(4px);}
+  .tl-lane{position:relative; height:46px;}
+  .tl-bar{position:absolute; top:12px; height:9px; border-radius:5px; transform-origin:left center;}
+  .tl-bar.now{background:var(--brass);}
+  .tl-bar.biz{background:var(--brass-soft);}
+  .tl-bar.intern{background:#C7E2D2;}
+  .tl-bar.edu{background:linear-gradient(to right, rgba(196,187,138,0), var(--rule-strong) 22%);}
+  .tl-lbl{position:absolute; top:0; margin-left:10px; font-size:0.78rem; line-height:1.25; white-space:nowrap;}
+  .tl-lbl.rt{margin-left:0; margin-right:10px; text-align:right;}
+  .tl-lbl b{font-weight:600;}
+  .tl-lbl .d{display:block; font-family:'IBM Plex Mono', monospace; font-size:0.66rem; color:var(--ink-soft); margin-top:1px;}
+  .tl-note{margin:8px 0 0; font-size:0.78rem; color:var(--ink-soft);}
+  [data-reveal] .tl-bar{transform:scaleX(0); transition:transform .9s ease .2s;}
+  [data-reveal].in .tl-bar{transform:scaleX(1);}
+  @media (prefers-reduced-motion: reduce){ [data-reveal] .tl-bar{transform:none; transition:none;} }
+
+
+  /* CHARTS */
+  .chart{margin:0 0 22px;}
+  .chart-note{font-size:0.8rem !important; color:var(--ink-soft); margin:0 0 14px !important;}
+  .chart figcaption{font-family:'IBM Plex Mono', monospace; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--ink-soft); margin:0 0 6px;}
+  .chart-scroll{overflow-x:auto;}
+  .chart svg{display:block; width:100%; min-width:600px; height:auto; font-family:'IBM Plex Sans', sans-serif;}
+  .chart .gl{stroke:var(--rule); stroke-width:1;} .chart .zero{stroke:var(--ink-soft); stroke-width:1.4;}
+  .chart .ax{font-family:'IBM Plex Mono', monospace; font-size:11.5px; fill:var(--ink-soft);}
+  .chart .leg{font-size:12.5px; fill:var(--ink);} .chart .note{font-size:12px; fill:var(--ink-soft);}
+  .chart .val{font-family:'IBM Plex Mono', monospace; font-size:12.5px; fill:var(--ink); font-weight:500;}
+  .chart .tier{font-size:14px; font-weight:600; fill:var(--ink);} .chart .lift{font-size:14px; font-weight:600; fill:var(--pos);}
+  .chart .callout{font-size:13px; font-weight:600; fill:var(--neg);}
+  .chart .line{fill:none; stroke-width:3; stroke-linecap:round; stroke-linejoin:round;}
+  .chart .line.m1{stroke:var(--brass);} .chart .c30{stroke:var(--neg);} .chart .c60{stroke:var(--amber);} .chart .c90{stroke:var(--pos);}
+  .chart .swl{stroke-width:3; stroke-linecap:round;}
+  .chart .lgd.base{fill:var(--rule-strong);} .chart .lgd.opt{fill:var(--brass);}
+  .chart .dot{fill:var(--brass); stroke:var(--paper-raised); stroke-width:2;}
+  .chart .c30d{fill:var(--neg);} .chart .c60d{fill:var(--amber);} .chart .c90d{fill:var(--pos);}
+  .chart .floor{stroke:var(--ink); stroke-width:1.5; stroke-dasharray:5 4;}
+  .chart .lead{stroke:var(--ink-soft); stroke-width:1; stroke-dasharray:3 3;}
+  .chart .be{fill:var(--paper-raised); stroke:var(--neg); stroke-width:3;}
+  .chart .surplus{fill:rgba(31,107,74,.13);} .chart .breach{fill:rgba(180,64,43,.14);}
+  .chart .bar.base{fill:var(--rule-strong);} .chart .bar.opt{fill:var(--brass);}
+  .project-body .line{stroke-dasharray:1; stroke-dashoffset:1; transition:stroke-dashoffset 1.2s ease .15s;}
+  .project-body.open .line{stroke-dashoffset:0;}
+  .project-body .bar{transform-box:fill-box; transform-origin:bottom; transform:scaleY(0); transition:transform .7s ease .15s;}
+  .project-body.open .bar{transform:scaleY(1);}
+  @media (prefers-reduced-motion: reduce){ .project-body .line{stroke-dashoffset:0; transition:none;} .project-body .bar{transform:none; transition:none;} }
+
+  /* PROJECT CARDS */
+  .project{
+    background:var(--paper-raised);
+    border:1px solid var(--rule);
+    border-radius:2px;
+    margin-bottom:28px;
+    overflow:hidden;
+  }
+  .project-head{
+    padding:22px 26px 18px; border-bottom:1px solid var(--rule);
+    display:flex; justify-content:space-between; align-items:flex-start; gap:20px; flex-wrap:wrap;
+  }
+  .project-tag{
+    font-family:'IBM Plex Mono', monospace; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.1em;
+    color:var(--brass); margin-bottom:8px;
+  }
+  .pub-badge{display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:0.72rem; letter-spacing:0.04em; text-transform:uppercase; color:var(--paper-raised); background:var(--brass); padding:3px 9px; border-radius:2px; margin:0 0 10px;}
+  /* automation card */
+  .flow{margin:0 0 22px;}
+  .flow-label{font-family:'IBM Plex Mono', monospace; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-soft); margin:0 0 8px;}
+  .flow-row{display:flex; align-items:stretch; gap:0; flex-wrap:wrap;}
+  .fs{flex:1 1 120px; border:1px solid var(--rule-strong); background:var(--paper-raised); padding:10px 12px; font-size:0.84rem; line-height:1.35; position:relative; margin-right:18px; margin-bottom:8px;}
+  .fs:last-child{margin-right:0;}
+  .fs:not(:last-child)::after{content:"\2192"; position:absolute; right:-17px; top:50%; transform:translateY(-50%); color:var(--ink-soft); font-size:0.95rem;}
+  .fs b{display:block; font-size:0.66rem; font-family:'IBM Plex Mono', monospace; letter-spacing:0.06em; color:var(--ink-soft); font-weight:500; margin-bottom:3px;}
+  .fs.manual{border-style:dashed; color:var(--neg); border-color:var(--neg);}
+  .fs.manual b{color:var(--neg);}
+  .fs.auto{background:rgba(31,107,74,0.10); border-color:var(--pos);}
+  .fs.review{border-color:var(--amber); background:rgba(211,154,31,0.12);}
+  .stat-row{display:flex; gap:14px; flex-wrap:wrap; margin:6px 0 22px;}
+  .stat{flex:1 1 150px; border-top:3px solid var(--pos); background:var(--paper-raised); padding:10px 14px;}
+  .stat .n{font-family:'Fraunces', serif; font-size:1.9rem; font-weight:600; color:var(--pos); line-height:1.1;}
+  .stat .t{font-size:0.82rem; color:var(--ink-soft);}
+  .gov{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin:0 0 22px;}
+  .gov div{border:1px solid var(--rule); background:var(--paper-raised); padding:12px 14px; font-size:0.86rem;}
+  .gov strong{display:block; margin-bottom:4px; font-size:0.9rem;}
+  h3.project-title{font-family:'Fraunces', serif; font-size:1.35rem; font-weight:600; margin:0 0 6px;}
+  .project-org{font-family:'IBM Plex Sans', sans-serif; font-size:0.85rem; font-weight:400; color:var(--ink-soft); white-space:nowrap;}
+  .project-q{color:var(--ink-soft); font-size:0.95rem; font-style:italic;}
+  .project-body{padding:0 26px; max-height:0; overflow:hidden; transition:max-height .4s ease, padding .4s ease;}
+  .project-body.open{padding:20px 26px 26px; max-height:2400px;}
+  .project-body p{margin:0 0 14px; font-size:0.96rem;}
+  .project-body p:last-of-type{margin-bottom:0;}
+  .project-body ul{margin:0; padding-left:20px;}
+  .project-body li{margin-bottom:8px; font-size:0.96rem;}
+  .project-body li:last-child{margin-bottom:0;}
+
+  .toggle-btn{
+    display:inline-flex; align-items:center; gap:7px; flex-shrink:0;
+    font-family:'IBM Plex Mono', monospace; font-size:0.76rem; letter-spacing:0.02em;
+    background:none; border:1px solid var(--rule-strong); color:var(--ink-soft);
+    padding:8px 13px; border-radius:2px; cursor:pointer; white-space:nowrap;
+    transition:all .18s ease;
+  }
+  .toggle-btn:hover{border-color:var(--brass); color:var(--brass);}
+  .toggle-btn .chev{display:inline-block; font-size:0.65rem; transition:transform .25s ease;}
+  .toggle-btn[aria-expanded="true"] .chev{transform:rotate(180deg);}
+  .project-footer{padding:16px 26px 24px;}
+
+  table.figures{
+    width:100%; border-collapse:collapse; margin:16px 0 20px;
+    font-family:'IBM Plex Mono', monospace; font-size:0.84rem;
+  }
+  table.figures th, table.figures td{
+    text-align:right; padding:8px 10px; border-bottom:1px solid var(--rule);
+  }
+  table.figures th:first-child, table.figures td:first-child{text-align:left; color:var(--ink-soft); font-weight:400;}
+  table.figures thead th{
+    color:var(--ink-soft); font-weight:500; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.06em;
+    border-bottom:1px solid var(--rule-strong);
+  }
+  .pos{color:var(--pos);}
+  .neg{color:var(--neg);}
+
+  .finding{
+    background:var(--paper); border-left:2px solid var(--brass);
+    padding:12px 16px; margin:16px 0; font-size:0.92rem;
+  }
+  .finding strong{color:var(--ink);}
+
+  .project-links{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem; text-decoration:none;
+    padding:9px 14px; border:1px solid var(--rule-strong); color:var(--ink);
+    transition:all .18s ease; border-radius:2px;
+  }
+  .btn:hover{border-color:var(--brass); color:var(--brass); background:rgba(31,107,74,0.06);}
+  .btn.primary{background:var(--ink); color:var(--paper); border-color:var(--ink);}
+  .btn.primary:hover{background:var(--brass); border-color:var(--brass); color:var(--paper);}
+
+  /* SKILLS */
+  .skills-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:32px;}
+  .skill-group h4{
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em;
+    color:var(--brass); margin:0 0 12px;
+  }
+  .skill-group ul{list-style:none; margin:0; padding:0;}
+  .skill-group li{
+    padding:7px 0; border-bottom:1px dotted var(--rule-strong); font-size:0.92rem;
+  }
+
+  /* EXPERIENCE */
+  .exp-item{padding:16px 0; border-bottom:1px solid var(--rule);}
+  .exp-item:last-child{border-bottom:none;}
+  .exp-top{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .exp-role{font-weight:600; font-size:1.02rem;}
+  .exp-org{color:var(--ink-soft); font-size:0.95rem;}
+  .exp-time{font-family:'IBM Plex Mono', monospace; font-size:0.76rem; color:var(--ink-soft); white-space:nowrap; text-align:right;}
+  .exp-location{font-family:'IBM Plex Mono', monospace; font-size:0.76rem; color:var(--ink-soft); white-space:nowrap; text-align:right; margin-top:2px;}
+
+  /* BEYOND */
+  .personal-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;}
+  .personal-card{
+    background:var(--paper-raised); border:1px solid var(--rule); border-radius:2px;
+    padding:20px 22px;
+  }
+  .personal-card h4{font-family:'Fraunces', serif; font-size:1.05rem; margin:0 0 8px; font-weight:600;}
+  .personal-card p{margin:0; font-size:0.9rem; color:var(--ink-soft);}
+
+
+  footer{padding:36px 0 50px;}
+  .foot-row{
+    display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;
+    font-size:0.84rem; color:var(--ink-soft);
+    border-top:1px solid var(--rule); padding-top:20px;
+  }
+  .foot-links{display:flex; gap:18px; list-style:none; margin:0; padding:0;}
+  .foot-links a{text-decoration:none; border-bottom:1px solid transparent;}
+  .foot-links a:hover{border-color:var(--brass); color:var(--brass);}
+
+  [data-reveal]{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
+  [data-reveal].in{opacity:1; transform:translateY(0);}
+
+  @media (max-width:640px){
+    .nav-links{gap:16px; font-size:0.8rem;}
+    .stat-row{grid-template-columns:1fr; }
+    .stat{border-right:none; border-bottom:1px solid var(--rule);}
+    .stat:last-child{border-bottom:none;}
+    .skills-grid{grid-template-columns:1fr;}
+    .personal-grid{grid-template-columns:1fr;}
+    table.figures{font-size:0.74rem;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    [data-reveal]{opacity:1; transform:none; transition:none;}
+  }
+  a:focus-visible, button:focus-visible{outline:2px solid var(--brass); outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <nav class="nav">
+    <div class="nav-mark">Minji Kim</div>
+    <ul class="nav-links">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#beyond">Beyond</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO SECTION -->
+  <div class="wrap hero">
+    <div class="eyebrow">Financial Analyst &middot; Revenue Operations</div>
+    <h1 class="name">Minji Kim</h1>
+    <p class="role-line">
+      I'm a <strong>Financial Analyst</strong> who likes finding out why the numbers move, then building the <strong>model</strong> or the <strong>automation</strong> that makes the answer easy to see. I studied <strong>statistics at UC Berkeley</strong>, and right now I handle <strong>monthly financial reporting</strong> at a healthcare consulting firm. The work I enjoy most is <strong>pricing and profitability analysis</strong> and <strong>revenue operations</strong>, where clean data and a good process lead straight to better decisions. I'm looking for a team where I can take on more and keep learning fast.
+    </p>
+
+    <div class="kw-rows">
+      <div class="kw-row">
+        <div class="kw-label">Focus</div>
+        <div class="chips"><span class="chip">Pricing &amp; Profitability</span><span class="chip">Financial Reporting</span><span class="chip">Revenue Ops</span><span class="chip">Process Automation</span></div>
+      </div>
+      <div class="kw-row">
+        <div class="kw-label">Tools</div>
+        <div class="chips"><span class="chip">Excel</span><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">R</span><span class="chip">Apps Script</span><span class="chip">AppSheet</span><span class="chip">QuickBooks</span><span class="chip">SAP</span></div>
+      </div>
+      <div class="kw-row">
+        <div class="kw-label">Credentials</div>
+        <div class="chips"><a class="chip cred" href="https://drive.google.com/file/d/1z3UCRYpSGdB4XXEKDiMo6eHlQyouM2Hk/view?usp=sharing" target="_blank" rel="noopener">FMAA: Financial &amp; Managerial Accounting Associate &middot; July 2026 &rarr;</a><span class="chip cred">Member, Institute of Management Accountants (IMA)</span><span class="chip cred">Working toward CMA: Certified Management Accountant</span></div>
+      </div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat">
+        <div class="stat-label">Location</div>
+        <div class="stat-value">Fremont, CA (San Francisco Bay Area)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Education</div>
+        <div class="stat-value">UC Berkeley &middot; B.A. Statistics, Business Administration Emphasis</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Email</div>
+        <div class="stat-value"><a href="mailto:minjikim.ready@gmail.com">minjikim.ready@gmail.com</a></div>
+      </div>
+    </div>
+
+    <div class="project-links" style="margin-top:24px;">
+      <a class="btn" href="https://www.linkedin.com/in/minjik30" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE SECTION -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num">01</span>
+        <h2 class="section-title">Professional Experience</h2>
+      </div>
+      <hr class="section-rule">
+      <div class="timeline" data-reveal role="img" aria-label="Timeline from 2024 to 2026: graduated December 2024, joined N2N September 2025, earned FMAA July 2026. UC Berkeley, NiceBake, CABS and N2N overlap in time.">
+        <div class="tl-inner">
+        <p class="tl-title">Timeline &middot; 2024 &ndash; Now</p>
+        <div class="tl-flags"><div class="tl-flag" style="left:33.33%"><div class="tx"><b>December 2024</b>Graduated, UC Berkeley</div></div><div class="tl-flag" style="left:55.56%"><div class="tx"><b>September 2025</b>Joined N2N</div></div><div class="tl-flag" style="left:83.33%"><div class="tx"><b>July 2026</b>Earned FMAA</div></div></div>
+        <div class="tl-line"><i style="left:33.33%"></i><i style="left:55.56%"></i><i style="left:83.33%"></i></div>
+        <div class="tl-years"><span style="left:0">2024</span><span style="left:33.33%">2025</span><span style="left:66.67%">2026</span></div>
+        <div class="tl-lane"><div class="tl-bar now" style="left:55.56%; width:41.67%;"></div><div class="tl-lbl rt" style="right:44.44%"><b>N2N GXPS4U</b> Junior Financial Analyst<span class="d">September 2025 &ndash; Present</span></div></div>
+        <div class="tl-lane"><div class="tl-bar intern" style="left:13.89%; width:8.33%;"></div><div class="tl-bar intern" style="left:47.22%; width:8.33%;"></div><div class="tl-lbl" style="left:55.56%"><b>CABS (Biopharma Association)</b> Data Science Intern<span class="d">Summer 2024 &amp; Summer 2025</span></div></div>
+        <div class="tl-lane"><div class="tl-bar biz" style="left:2.78%; width:55.56%;"></div><div class="tl-lbl" style="left:58.33%"><b>NiceBake</b> Co-Founder, Finance &amp; Operations<span class="d">February 2024 &ndash; September 2025</span></div></div>
+        <div class="tl-lane"><div class="tl-bar edu" style="left:0.00%; width:33.33%;"></div><div class="tl-lbl" style="left:33.33%"><b>UC Berkeley</b> B.A. Statistics, Business Administration Emphasis<span class="d">Graduated December 2024</span></div></div>
+        <p class="tl-note">Most of these ran side by side: school, my own business, internships, and then a full-time role. Berkeley started before 2024.</p>
+        </div>
+      </div>
+
+      <div data-reveal>
+        
+        <div class="exp-item">
+          <div class="exp-top">
+            <div><span class="exp-role">Junior Financial Analyst</span> &nbsp;<span class="exp-org">&middot; N2N GXPS4U LLC &middot; Full-time</span></div>
+            <div><div class="exp-time">September 2025 &ndash; Present</div><div class="exp-location">San Mateo, CA</div></div>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-top">
+            <div><span class="exp-role">Data Science Intern</span> &nbsp;<span class="exp-org">&middot; Chinese American Biopharmaceutical Association (CABS) &middot; Internship</span></div>
+            <div><div class="exp-time">Summer 2024 &amp; Summer 2025</div><div class="exp-location">San Francisco, CA</div></div>
+          </div>
+          <p style="margin:8px 0 0;"><a href="https://docs.google.com/document/d/1VvAezRi-zC1qBoC14Poki-7wDSlRvEYr/edit?usp=sharing&ouid=117271868207769694299&rtpof=true&sd=true" target="_blank" rel="noopener" style="border-bottom:1px solid var(--rule-strong);">View Recommendation Letter &rarr;</a>
+            &nbsp;&middot;&nbsp;
+            <a href="https://drive.google.com/file/d/1iv-vRBbcdeAOGVrQO7pISHGj9SJAyNlC/view?usp=sharing" target="_blank" rel="noopener" style="border-bottom:1px solid var(--rule-strong);">View Certificate &rarr;</a></p>
+        </div>
+
+
+        <div class="exp-item">
+          <div class="exp-top">
+            <div><span class="exp-role">Co-Founder, Finance &amp; Operations</span> &nbsp;<span class="exp-org">&middot; NiceBake &middot; Part-time</span></div>
+            <div><div class="exp-time">February 2024 &ndash; September 2025</div><div class="exp-location">Santa Clara, CA</div></div>
+          </div>
+          <p style="margin:8px 0 0;"><a href="https://drive.google.com/file/d/12rzVFUwXKUBl2uGdGTRtvV9dUQMO1P5w/view?usp=sharing" target="_blank" rel="noopener" style="border-bottom:1px solid var(--rule-strong);">View Business Pitch Deck &rarr;</a></p>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-top">
+            <div><span class="exp-role">Marketing Intern</span> &nbsp;<span class="exp-org">&middot; Playhouse &middot; Internship</span></div>
+            <div><div class="exp-time">September 2023 &ndash; December 2023</div><div class="exp-location">Berkeley, CA</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<!-- SKILLS SECTION -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num">02</span>
+        <h2 class="section-title">Core Competencies</h2>
+      </div>
+      <hr class="section-rule">
+      <div class="skills-grid" data-reveal>
+        <div class="skill-group">
+          <h4>Financial &amp; Reporting</h4>
+          <ul>
+            <li>Financial Modeling &amp; Forecasting</li>
+            <li>P&amp;L Analysis &amp; Variance Reporting</li>
+            <li>Cash Flow Management</li>
+            <li>Revenue &amp; Margin Optimization</li>
+            <li>Pricing Strategy &amp; Profitability Analysis</li>
+            <li>GAAP Principles &amp; Reconciliation</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4>Analytics &amp; Technical Stack</h4>
+          <ul>
+            <li>Excel (Advanced)</li>
+            <li>SQL &amp; Relational Databases</li>
+            <li>Python &amp; R (Advanced)</li>
+            <li>Tableau &amp; Data Visualization</li>
+            <li>Generative AI &amp; API Data Pipelines</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h4>Enterprise Systems &amp; Ops</h4>
+          <ul>
+            <li>SAP ERP Systems</li>
+            <li>QuickBooks Online</li>
+            <li>Google Workspace &amp; Apps Script Automation</li>
+            <li>Cross-Functional Stakeholder Alignment</li>
+            <li>Financial Process Optimization</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- PROJECTS SECTION -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num">03</span>
+        <h2 class="section-title">Selected Projects</h2>
+      </div>
+      <hr class="section-rule">
+
+      <!-- PROJECT 1: PROFITABILITY & SCENARIO ANALYSIS -->
+      <article class="project" data-reveal>
+        <div class="project-head">
+          <div>
+            <div class="project-tag">Financial Modeling &middot; Scenario Analysis</div>
+            <h3 class="project-title">Project Profitability &amp; Scenario Model <span class="project-org">(Personal)</span></h3>
+            <p class="project-q">How resilient is project gross margin under aggressive pricing discounts, and what working capital terms protect cash flow?</p>
+          </div>
+          <button class="toggle-btn" type="button" aria-expanded="false"><span class="label">View Analysis</span> <span class="chev">&#9662;</span></button>
+        </div>
+        <div class="project-body">
+
+          <figure class="chart" aria-labelledby="c1t">
+<figcaption id="c1t">Gross margin vs. client discount</figcaption>
+<div class="chart-scroll"><svg viewBox="0 0 760 300" role="img" aria-label="Line chart. Gross margin falls from 53.16% at no discount to 50.69% at a 5% discount and 47.95% at 10%. It crosses the 50% target floor at a 6.31% discount.">
+<line x1="58" x2="736" y1="256.0" y2="256.0" class="gl"/><text x="50" y="260.0" class="ax" text-anchor="end">46%</text><line x1="58" x2="736" y1="199.5" y2="199.5" class="gl"/><text x="50" y="203.5" class="ax" text-anchor="end">48%</text><line x1="58" x2="736" y1="143.0" y2="143.0" class="gl"/><text x="50" y="147.0" class="ax" text-anchor="end">50%</text><line x1="58" x2="736" y1="86.5" y2="86.5" class="gl"/><text x="50" y="90.5" class="ax" text-anchor="end">52%</text><line x1="58" x2="736" y1="30.0" y2="30.0" class="gl"/><text x="50" y="34.0" class="ax" text-anchor="end">54%</text><text x="58.0" y="276" class="ax" text-anchor="middle">0%</text><text x="193.6" y="276" class="ax" text-anchor="middle">2%</text><text x="329.2" y="276" class="ax" text-anchor="middle">4%</text><text x="464.8" y="276" class="ax" text-anchor="middle">6%</text><text x="600.4" y="276" class="ax" text-anchor="middle">8%</text><text x="736.0" y="276" class="ax" text-anchor="middle">10%</text>
+<path d="M58.0,53.8 L64.8,55.2 L71.6,56.5 L78.3,57.8 L85.1,59.1 L91.9,60.5 L98.7,61.8 L105.5,63.2 L112.2,64.5 L119.0,65.9 L125.8,67.2 L132.6,68.6 L139.4,69.9 L146.1,71.3 L152.9,72.6 L159.7,74.0 L166.5,75.4 L173.3,76.7 L180.0,78.1 L186.8,79.5 L193.6,80.8 L200.4,82.2 L207.2,83.6 L213.9,85.0 L220.7,86.4 L227.5,87.8 L234.3,89.2 L241.1,90.6 L247.8,92.0 L254.6,93.4 L261.4,94.8 L268.2,96.2 L275.0,97.6 L281.7,99.0 L288.5,100.4 L295.3,101.8 L302.1,103.3 L308.9,104.7 L315.6,106.1 L322.4,107.5 L329.2,109.0 L336.0,110.4 L342.8,111.9 L349.5,113.3 L356.3,114.7 L363.1,116.2 L369.9,117.6 L376.7,119.1 L383.4,120.6 L390.2,122.0 L397.0,123.5 L403.8,125.0 L410.6,126.4 L417.3,127.9 L424.1,129.4 L430.9,130.9 L437.7,132.3 L444.5,133.8 L451.2,135.3 L458.0,136.8 L464.8,138.3 L471.6,139.8 L478.4,141.3 L485.1,142.8 L485.1,143.0 L58.0,143.0 Z" class="surplus"/><path d="M491.9,144.3 L498.7,145.8 L505.5,147.3 L512.3,148.9 L519.0,150.4 L525.8,151.9 L532.6,153.4 L539.4,155.0 L546.2,156.5 L552.9,158.0 L559.7,159.6 L566.5,161.1 L573.3,162.7 L580.1,164.2 L586.8,165.8 L593.6,167.3 L600.4,168.9 L607.2,170.5 L614.0,172.0 L620.7,173.6 L627.5,175.2 L634.3,176.8 L641.1,178.3 L647.9,179.9 L654.6,181.5 L661.4,183.1 L668.2,184.7 L675.0,186.3 L681.8,187.9 L688.5,189.5 L695.3,191.1 L702.1,192.7 L708.9,194.4 L715.7,196.0 L722.4,197.6 L729.2,199.2 L736.0,200.9 L736.0,143.0 L491.9,143.0 Z" class="breach"/>
+<line x1="58" x2="736" y1="143.0" y2="143.0" class="floor"/>
+<text x="732" y="135.0" class="note" text-anchor="end">50% target floor</text>
+<path d="M58.0,53.8 L64.8,55.2 L71.6,56.5 L78.3,57.8 L85.1,59.1 L91.9,60.5 L98.7,61.8 L105.5,63.2 L112.2,64.5 L119.0,65.9 L125.8,67.2 L132.6,68.6 L139.4,69.9 L146.1,71.3 L152.9,72.6 L159.7,74.0 L166.5,75.4 L173.3,76.7 L180.0,78.1 L186.8,79.5 L193.6,80.8 L200.4,82.2 L207.2,83.6 L213.9,85.0 L220.7,86.4 L227.5,87.8 L234.3,89.2 L241.1,90.6 L247.8,92.0 L254.6,93.4 L261.4,94.8 L268.2,96.2 L275.0,97.6 L281.7,99.0 L288.5,100.4 L295.3,101.8 L302.1,103.3 L308.9,104.7 L315.6,106.1 L322.4,107.5 L329.2,109.0 L336.0,110.4 L342.8,111.9 L349.5,113.3 L356.3,114.7 L363.1,116.2 L369.9,117.6 L376.7,119.1 L383.4,120.6 L390.2,122.0 L397.0,123.5 L403.8,125.0 L410.6,126.4 L417.3,127.9 L424.1,129.4 L430.9,130.9 L437.7,132.3 L444.5,133.8 L451.2,135.3 L458.0,136.8 L464.8,138.3 L471.6,139.8 L478.4,141.3 L485.1,142.8 L491.9,144.3 L498.7,145.8 L505.5,147.3 L512.3,148.9 L519.0,150.4 L525.8,151.9 L532.6,153.4 L539.4,155.0 L546.2,156.5 L552.9,158.0 L559.7,159.6 L566.5,161.1 L573.3,162.7 L580.1,164.2 L586.8,165.8 L593.6,167.3 L600.4,168.9 L607.2,170.5 L614.0,172.0 L620.7,173.6 L627.5,175.2 L634.3,176.8 L641.1,178.3 L647.9,179.9 L654.6,181.5 L661.4,183.1 L668.2,184.7 L675.0,186.3 L681.8,187.9 L688.5,189.5 L695.3,191.1 L702.1,192.7 L708.9,194.4 L715.7,196.0 L722.4,197.6 L729.2,199.2 L736.0,200.9" class="line m1" pathLength="1"/>
+<circle cx="58.0" cy="53.8" r="5" class="dot"/><text x="58.0" y="41.8" class="val" text-anchor="start">53.16%</text><circle cx="397.0" cy="123.5" r="5" class="dot"/><text x="397.0" y="111.5" class="val" text-anchor="middle">50.69%</text><circle cx="736.0" cy="200.9" r="5" class="dot"/><text x="736.0" y="222.9" class="val" text-anchor="end">47.95%</text>
+<line x1="485.8" x2="485.8" y1="143.0" y2="41.3" class="lead"/>
+<circle cx="485.8" cy="143.0" r="8" class="be"/>
+<text x="485.8" y="33.3" class="callout" text-anchor="middle">Break-even discount: 6.31%</text>
+<text x="397.0" y="294" class="ax" text-anchor="middle">Client discount</text>
+</svg></div></figure>
+          <figure class="chart" aria-labelledby="c2t">
+<figcaption id="c2t">Net cash position by contractor payment terms</figcaption>
+<div class="chart-scroll"><svg viewBox="0 0 760 330" role="img" aria-label="Line chart of net cash position from January 2027 to April 2028 under Net 30, Net 60 and Net 90 contractor payment terms. The lowest point in September 2027 is about negative 217 thousand dollars on Net 30, negative 110 thousand on Net 60, and negative 3 thousand on Net 90. All three end at 1.65 million dollars.">
+<line x1="64" x2="736" y1="285.0" y2="285.0" class="gl"/><text x="56" y="289.0" class="ax" text-anchor="end">−$250K</text><line x1="64" x2="736" y1="259.7" y2="259.7" class="zero"/><text x="56" y="263.7" class="ax" text-anchor="end">$0</text><line x1="64" x2="736" y1="209.3" y2="209.3" class="gl"/><text x="56" y="213.3" class="ax" text-anchor="end">$500K</text><line x1="64" x2="736" y1="158.9" y2="158.9" class="gl"/><text x="56" y="162.9" class="ax" text-anchor="end">$1M</text><line x1="64" x2="736" y1="108.4" y2="108.4" class="gl"/><text x="56" y="112.4" class="ax" text-anchor="end">$1.5M</text><line x1="64" x2="736" y1="58.0" y2="58.0" class="gl"/><text x="56" y="62.0" class="ax" text-anchor="end">$2M</text><text x="64.0" y="310" class="ax" text-anchor="middle">January 2027</text><text x="198.4" y="310" class="ax" text-anchor="middle">April 2027</text><text x="332.8" y="310" class="ax" text-anchor="middle">July 2027</text><text x="467.2" y="310" class="ax" text-anchor="middle">October 2027</text><text x="601.6" y="310" class="ax" text-anchor="middle">January 2028</text><text x="736.0" y="310" class="ax" text-anchor="end">April 2028</text>
+<line x1="64" x2="86" y1="16" y2="16" class="swl c30"/><text x="92" y="20" class="leg">Contractors paid Net 30</text><line x1="279" x2="301" y1="16" y2="16" class="swl c60"/><text x="307" y="20" class="leg">Net 60</text><line x1="374" x2="396" y1="16" y2="16" class="swl c90"/><text x="402" y="20" class="leg">Net 90</text>
+<line x1="422.4" x2="422.4" y1="52" y2="290" class="lead"/>
+<text x="412.4" y="66" class="note" text-anchor="end"><tspan x="412.4" font-weight="600" style="fill:var(--ink)">Lowest point: September 2027</tspan><tspan x="412.4" dy="16" style="fill:var(--neg)">Net 30: −$217K</tspan><tspan x="412.4" dy="16" style="fill:var(--amber-ink)">Net 60: −$110K</tspan><tspan x="412.4" dy="16" style="fill:var(--pos)">Net 90: −$3K</tspan></text>
+<path d="M64.0,259.7 L108.8,269.2 L153.6,278.7 L198.4,227.6 L243.2,238.4 L288.0,249.2 L332.8,260.0 L377.6,270.8 L422.4,281.6 L467.2,152.4 L512.0,167.1 L556.8,181.8 L601.6,104.0 L646.4,93.1 L691.2,93.1 L736.0,93.1" class="line c30" pathLength="1"/><path d="M64.0,259.7 L108.8,259.7 L153.6,269.2 L198.4,218.1 L243.2,227.6 L288.0,238.4 L332.8,249.2 L377.6,260.0 L422.4,270.8 L467.2,141.6 L512.0,152.4 L556.8,167.1 L601.6,89.3 L646.4,83.6 L691.2,93.1 L736.0,93.1" class="line c60" pathLength="1"/><path d="M64.0,259.7 L108.8,259.7 L153.6,259.7 L198.4,208.7 L243.2,218.1 L288.0,227.6 L332.8,238.4 L377.6,249.2 L422.4,260.0 L467.2,130.8 L512.0,141.6 L556.8,152.4 L601.6,74.6 L646.4,68.9 L691.2,83.6 L736.0,93.1" class="line c90" pathLength="1"/>
+<circle cx="422.4" cy="281.6" r="4.5" class="dot c30d"/><circle cx="422.4" cy="270.8" r="4.5" class="dot c60d"/><circle cx="422.4" cy="260.0" r="4.5" class="dot c90d"/>
+</svg></div></figure>
+
+          <p class="chart-note">Independent case study with fictional data. Charts are built from the numbers in the Excel model linked below.</p>
+
+          <div class="finding">
+            <strong>Key Insight:</strong> <strong>6.31%</strong> is the exact breakeven discount before margin drops below the firm's 50% target, a hard floor to know going into final-round price negotiations. On cash flow, paying contractors on Net 90 instead of Net 30 keeps the lowest cash point near break-even (about −$3K) instead of −$217K.
+          </div>
+        </div>
+        <div class="project-footer">
+          <div class="project-links">
+            <a class="btn primary" href="https://docs.google.com/spreadsheets/d/1avzYJ0lZNLfmX_MmU-ijMckdfOBhGUFQxHd6e2p4wnI/edit?usp=sharing" target="_blank" rel="noopener">Download Financial Model (.xlsx)</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT: AUTOMATION -->
+      <article class="project" data-reveal>
+        <div class="project-head">
+          <div>
+            <div class="project-tag">Process Automation &middot; Financial Controls</div>
+            <h3 class="project-title">Financial Data Visibility Through Controlled Automation <span class="project-org">(Personal)</span></h3>
+            <p class="project-q">How much should be automated, and how much should stay under human review?</p>
+          </div>
+          <button class="toggle-btn" type="button" aria-expanded="false"><span class="label">View Analysis</span> <span class="chev">&#9662;</span></button>
+        </div>
+        <div class="project-body">
+          <p><strong>Before:</strong> every receipt was read, interpreted, and entered by hand, so expense records were fragmented and financial visibility was delayed.</p>
+          <div class="flow" style="margin-top:14px">
+            <div class="flow-label">After: structured input, automatic recording, review by exception</div>
+            <div class="flow-row">
+              <div class="fs"><b>STEP 1</b>Receipt uploaded with a standard file name</div>
+              <div class="fs auto"><b>STEP 2</b>Fields read from the name and recorded automatically</div>
+              <div class="fs review"><b>STEP 3</b>Human checks only exceptions: foreign currency, bad format, risky classifications</div>
+            </div>
+          </div>
+          <ul>
+            <li>Invalid file names are skipped, and foreign currency amounts are flagged for manual review.</li>
+            <li>Each receipt is tracked by its Google Drive file ID, so duplicates update the existing row.</li>
+            <li>The script fills only empty fields. Manual edits are never overwritten.</li>
+          </ul>
+          <div class="stat-row" style="margin-top:20px">
+            <div class="stat"><div class="n">20%</div><div class="t">less manual processing time</div></div>
+            <div class="stat"><div class="n">70%</div><div class="t">less routine interpretation</div></div>
+            <div class="stat"><div class="n">100%</div><div class="t">duplicate prevention</div></div>
+          </div>
+          <div class="finding"><strong>Key Insight:</strong> Full automation was the wrong goal. Amounts, dates, and classifications flow into the financial statements, and OCR errors can distort them. So routine work is automated, and people review only the exceptions.</div>
+        </div>
+        <div class="project-footer">
+          <div class="project-links"></div>
+        </div>
+      </article>
+
+      <!-- PROJECT 2: CLINICAL TRIAL MARKET ACCESS -->
+      <article class="project" data-reveal>
+        <div class="project-head">
+          <div>
+            <div class="project-tag">Market Intelligence &middot; AI Data Pipelines</div>
+            <h3 class="project-title">Obesity Clinical Trials: Strategic Market Intelligence <span class="project-org">(CABS)</span></h3>
+            <p class="project-q">Where are the unaddressed commercial white spaces within a highly fragmented biopharma clinical trial pipeline?</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 3: AMC PRICING STRATEGY -->
+      <article class="project" data-reveal>
+        <div class="project-head">
+          <div>
+            <div class="project-tag">Pricing Optimization &middot; Quantitative Strategy</div>
+            <h3 class="project-title">AMC Theatres: Multi-Tier Membership Pricing Model <span class="project-org">(UC Berkeley)</span></h3>
+            <p class="project-q">How can subscription pricing and benefit structuring be optimized to capture latent consumer Willingness-to-Pay (WTP)?</p>
+          </div>
+          <button class="toggle-btn" type="button" aria-expanded="false"><span class="label">View Analysis</span> <span class="chev">&#9662;</span></button>
+        </div>
+        <div class="project-body">
+
+          <figure class="chart" aria-labelledby="c3t">
+<figcaption id="c3t">Willingness to pay (WTP) by membership tier</figcaption>
+<div class="chart-scroll"><svg viewBox="0 0 760 310" role="img" aria-label="Paired bar chart of willingness to pay by tier, before and after optimization. A-List rises from 50 to 55 dollars (plus 10 percent), Premiere from 10 to 20 dollars (plus 100 percent), and Insider from 5 to 8 dollars (plus 60 percent). Premiere's list price is 15 dollars a year.">
+<line x1="58" x2="736" y1="264.0" y2="264.0" class="zero"/><text x="50" y="268.0" class="ax" text-anchor="end">$0</text><line x1="58" x2="736" y1="227.3" y2="227.3" class="gl"/><text x="50" y="231.3" class="ax" text-anchor="end">$10</text><line x1="58" x2="736" y1="190.7" y2="190.7" class="gl"/><text x="50" y="194.7" class="ax" text-anchor="end">$20</text><line x1="58" x2="736" y1="154.0" y2="154.0" class="gl"/><text x="50" y="158.0" class="ax" text-anchor="end">$30</text><line x1="58" x2="736" y1="117.3" y2="117.3" class="gl"/><text x="50" y="121.3" class="ax" text-anchor="end">$40</text><line x1="58" x2="736" y1="80.7" y2="80.7" class="gl"/><text x="50" y="84.7" class="ax" text-anchor="end">$50</text><line x1="58" x2="736" y1="44.0" y2="44.0" class="gl"/><text x="50" y="48.0" class="ax" text-anchor="end">$60</text><rect x="58" y="8" width="12" height="12" class="lgd base"/><text x="76" y="19" class="leg">Baseline WTP</text><rect x="196" y="8" width="12" height="12" class="lgd opt"/><text x="214" y="19" class="leg">Post-optimization WTP</text><rect x="103.0" y="80.7" width="64" height="183.3" class="bar base"/><rect x="175.0" y="62.3" width="64" height="201.7" class="bar opt"/><text x="135.0" y="74.7" class="val" text-anchor="middle">$50</text><text x="207.0" y="56.3" class="val" text-anchor="middle">$55</text><text x="171.0" y="36.3" class="lift" text-anchor="middle">+10%</text><text x="171.0" y="286" class="tier" text-anchor="middle">A-List</text><rect x="329.0" y="227.3" width="64" height="36.7" class="bar base"/><rect x="401.0" y="190.7" width="64" height="73.3" class="bar opt"/><text x="361.0" y="221.3" class="val" text-anchor="middle">$10</text><text x="433.0" y="184.7" class="val" text-anchor="middle">$20</text><text x="397.0" y="164.7" class="lift" text-anchor="middle">+100%</text><text x="397.0" y="286" class="tier" text-anchor="middle">Premiere</text><rect x="555.0" y="245.7" width="64" height="18.3" class="bar base"/><rect x="627.0" y="234.7" width="64" height="29.3" class="bar opt"/><text x="587.0" y="239.7" class="val" text-anchor="middle">$5</text><text x="659.0" y="228.7" class="val" text-anchor="middle">$8</text><text x="623.0" y="208.7" class="lift" text-anchor="middle">+60%</text><text x="623.0" y="286" class="tier" text-anchor="middle">Insider</text><line x1="319.0" x2="475.0" y1="209.0" y2="209.0" class="floor"/><text x="481.0" y="207.0" class="note">List price</text><text x="481.0" y="221.0" class="note">$15/yr</text>
+</svg></div></figure>
+
+          <div class="finding">
+            <strong>Key Insight:</strong> The Premiere tier's baseline WTP sat below its $15/yr list price, the biggest pricing miss of the three tiers, and the one with the most room to fix.
+          </div>
+        </div>
+        <div class="project-footer">
+          <div class="project-links">
+            <a class="btn primary" href="https://drive.google.com/file/d/1M_vtloWjPU07PoenqQ7cGrN6H2ryGPQy/view?usp=sharing" target="_blank" rel="noopener">View Full Pricing Report (PDF)</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 4: EXINOV E-SCOOTER MARKET RESEARCH -->
+      <article class="project" data-reveal>
+        <div class="project-head">
+          <div>
+            <div class="project-tag">Market Research &middot; Competitive Benchmarking</div>
+            <div class="pub-badge">Published &middot; Co-authored &middot; July 2024</div>
+            <h3 class="project-title">Exinov: E-Scooter Market Success Guide <span class="project-org">(UC Berkeley Student Research Group)</span></h3>
+            <p class="project-q">What does it take to win in the e-scooter market, from marketing to product design?</p>
+          </div>
+          <button class="toggle-btn" type="button" aria-expanded="false"><span class="label">View Analysis</span> <span class="chev">&#9662;</span></button>
+        </div>
+        <div class="project-body">
+          <ul>
+            <li>Co-authored <em>"A Guide to E-Scooter Market Success: From Marketing to Design"</em> (July 2024).</li>
+            <li>Benchmarked Bird vs. Lyft (2020 to Q3 2023) using 10-K and 10-Q filings, market size, and market share data.</li>
+            <li>Ran sentiment analysis in R on 392 customer reviews, sorting complaints into operational, service, and app issues.</li>
+          </ul>
+        </div>
+        <div class="project-footer">
+          <div class="project-links">
+            <a class="btn primary" href="https://drive.google.com/file/d/1H3ol2PsfFJKvRRzuDCygqH9jYOs7uoiA/view?usp=sharing" target="_blank" rel="noopener">View Market Research Deliverable</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- BEYOND SECTION -->
+  <section id="beyond">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num">04</span>
+        <h2 class="section-title">Leadership &amp; Beyond</h2>
+      </div>
+      <hr class="section-rule">
+      <div class="personal-grid" data-reveal>
+        <div class="personal-card">
+          <h4>UC Berkeley Mentorship</h4>
+          <p>1:1 academic and career mentor for UC transfer applicants. Successfully guided students through complex application strategies, with mentees securing admissions to UC Berkeley and UCLA.</p>
+        </div>
+        <div class="personal-card">
+          <h4>WSET Certified (Level 1)</h4>
+          <p>Earned my WSET Level 1 in wine — I love discovering new bottles and sharing them with friends over a good meal.</p>
+          <p style="margin-top:8px;"><a href="https://www.credential.net/db2fb8f5-63a1-4752-997a-3cc4ab18b530?username=minjik300835" target="_blank" rel="noopener" style="border-bottom:1px solid var(--rule-strong);">View Credential &rarr;</a></p>
+        </div>
+        <div class="personal-card">
+          <h4>Digital Community Growth</h4>
+          <p>Scaled a personal dance and lifestyle platform to <strong>200K+ followers and 2M+ likes</strong>. Leveraged audience analytics and retention metrics to execute high-engagement campaigns.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-row">
+      <div>Minji Kim &middot; Financial Analyst &middot; Fremont, CA (San Francisco Bay Area)</div>
+      <ul class="foot-links">
+        <li><a href="mailto:minjikim.ready@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/minjik30" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const items = document.querySelectorAll('[data-reveal]');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.12});
+  items.forEach(el => io.observe(el));
+
+  document.querySelectorAll('.toggle-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const body = btn.closest('.project-head').nextElementSibling;
+      const isOpen = body.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      btn.querySelector('.label').textContent = isOpen ? 'Hide Analysis' : 'View Analysis';
+    });
+  });
+</script>
+
+</body>
+</html>
